@@ -39,7 +39,6 @@ public class VendasApplication {
                 repository.update(c);
             });
 
-//            repository.delete(2L);
 
             clientes = repository.findAll();
             clientes.forEach(System.out::println);

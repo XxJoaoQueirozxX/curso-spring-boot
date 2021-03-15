@@ -1,7 +1,17 @@
 package com.cursospring.domain.entities;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "cliente")
 public class Cliente {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "nome", nullable = false, length = 100)
     private String nome;
 
 
