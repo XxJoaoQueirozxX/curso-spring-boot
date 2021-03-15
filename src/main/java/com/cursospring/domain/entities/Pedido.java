@@ -3,6 +3,8 @@ package com.cursospring.domain.entities;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "pedido")
@@ -22,6 +24,9 @@ public class Pedido {
     @ManyToOne(targetEntity = Cliente.class)
     @JoinColumn(name = "client_id")
     private Cliente cliente;
+
+    @OneToMany(mappedBy = "pedido")
+    private List<ItemPedido> items = new ArrayList<>();
 
 
     public Pedido() {
@@ -66,5 +71,8 @@ public class Pedido {
         this.total = total;
     }
 
+    public List<ItemPedido> getItems() {
+        return items;
+    }
 
 }
