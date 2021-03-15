@@ -32,6 +32,9 @@ public class VendasApplication {
 
             System.out.println(exist);
 
+            clientes = repository.encontrarPorNome("Jo");
+            clientes.forEach(System.out::println);
+
         };
     }
 
