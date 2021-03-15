@@ -28,32 +28,10 @@ public class VendasApplication {
             List<Cliente> clientes = repository.findAll();
             clientes.forEach(System.out::println);
 
+            boolean exist = repository.existsByNome("Joãoo");
 
-            System.out.println("\nAtualizando ...");
-            clientes.forEach(c ->{
-                c.setNome(c.getNome() + "(Atualizado)");
-                repository.save(c);
-            });
+            System.out.println(exist);
 
-            System.out.println("\nListando atualizações ....");
-            clientes = repository.findAll();
-            clientes.forEach(System.out::println);
-
-            System.out.println("Buscando por nome car ...");
-            repository.findByNomeLike("%Car%").forEach(System.out::println);
-
-            System.out.println("\nDeletando clientes ....");
-            clientes.forEach(repository::delete);
-
-
-            System.out.println("\nListando ...");
-            clientes = repository.findAll();
-
-            if(clientes.isEmpty()){
-                System.out.println("Nenhum cliente encontrado");
-            }else{
-                clientes.forEach(System.out::println);
-            }
         };
     }
 
