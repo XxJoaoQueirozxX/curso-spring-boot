@@ -2,8 +2,8 @@ package com.cursospring.config;
 
 import com.cursospring.domain.entities.Cliente;
 import com.cursospring.domain.entities.Pedido;
-import com.cursospring.repositories.ClienteRepository;
-import com.cursospring.repositories.PedidoRepository;
+import com.cursospring.domain.repositories.ClienteRepository;
+import com.cursospring.domain.repositories.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;

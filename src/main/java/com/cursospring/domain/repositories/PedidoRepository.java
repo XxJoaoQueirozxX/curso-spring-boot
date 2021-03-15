@@ -1,4 +1,4 @@
-package com.cursospring.repositories;
+package com.cursospring.domain.repositories;
 
 import com.cursospring.domain.entities.Pedido;
 import org.springframework.data.jpa.repository.JpaRepository;
