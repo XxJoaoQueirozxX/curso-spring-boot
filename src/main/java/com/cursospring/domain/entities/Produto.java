@@ -19,6 +19,15 @@ public class Produto {
     private BigDecimal preco;
 
 
+    public Produto() {
+    }
+
+    public Produto(Long id, String descricao, BigDecimal preco) {
+        this.id = id;
+        this.descricao = descricao;
+        this.preco = preco;
+    }
+
     public Long getId() {
         return id;
     }
