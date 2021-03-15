@@ -1,11 +1,21 @@
 package com.cursospring.domain.entities;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "produto")
 public class Produto {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "descricao", nullable = false, length = 200)
     private String descricao;
+
+    @Column(name = "preco_unitario", nullable = false)
     private BigDecimal preco;
 
 

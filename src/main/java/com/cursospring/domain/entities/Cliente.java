@@ -1,6 +1,10 @@
 package com.cursospring.domain.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "cliente")
@@ -14,6 +18,8 @@ public class Cliente {
     @Column(name = "nome", nullable = false, length = 100)
     private String nome;
 
+    @OneToMany(mappedBy = "cliente")
+    private Set<Pedido> pedidos = new HashSet<>();
 
     public Cliente() {
     }
@@ -37,6 +43,10 @@ public class Cliente {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Set<Pedido> getPedidos() {
+        return pedidos;
     }
 
     @Override

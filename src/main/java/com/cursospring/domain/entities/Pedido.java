@@ -1,15 +1,38 @@
 package com.cursospring.domain.entities;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "pedido")
 public class Pedido {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Cliente cliente;
+
+    @Column(name = "data")
     private LocalDate dataPedido;
+
+    @Column(name = "total", length = 20, precision = 2)
     private BigDecimal total;
 
+
+    @ManyToOne(targetEntity = Cliente.class)
+    @JoinColumn(name = "client_id")
+    private Cliente cliente;
+
+
+    public Pedido() {
+    }
+
+    public Pedido(Long id, LocalDate dataPedido, BigDecimal total, Cliente cliente) {
+        this.id = id;
+        this.cliente = cliente;
+        this.dataPedido = dataPedido;
+        this.total = total;
+    }
 
     public Long getId() {
         return id;
@@ -42,4 +65,6 @@ public class Pedido {
     public void setTotal(BigDecimal total) {
         this.total = total;
     }
+
+
 }
