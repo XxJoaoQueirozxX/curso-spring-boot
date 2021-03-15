@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Arrays;
 import java.util.List;
 
 @SpringBootApplication
@@ -19,38 +20,33 @@ public class VendasApplication {
         return args -> {
 
             System.out.println("Salvado ....");
-            Cliente cliente = new Cliente();
-            cliente.setNome("João");
-            repository.save(cliente);
+            Cliente c1 = new Cliente(null, "João");
+            Cliente c2 = new Cliente(null, "Carlos");
+            repository.saveAll(Arrays.asList(c1, c2));
 
-            cliente = new Cliente();
-            cliente.setNome("Carlos");
-            repository.save(cliente);
-
-
-            System.out.println("Listando ...");
+            System.out.println("\nListando ...");
             List<Cliente> clientes = repository.findAll();
             clientes.forEach(System.out::println);
 
 
-            System.out.println("Atualizando ...");
+            System.out.println("\nAtualizando ...");
             clientes.forEach(c ->{
                 c.setNome(c.getNome() + "(Atualizado)");
-                repository.update(c);
+                repository.save(c);
             });
 
-
+            System.out.println("\nListando atualizações ....");
             clientes = repository.findAll();
             clientes.forEach(System.out::println);
 
+            System.out.println("Buscando por nome car ...");
+            repository.findByNomeLike("%Car%").forEach(System.out::println);
 
-            System.out.println("Buscando por nome Car ...");
-            repository.findByName("Car").forEach(System.out::println);
-
-            System.out.println("Deletando clientes ....");
+            System.out.println("\nDeletando clientes ....");
             clientes.forEach(repository::delete);
 
 
+            System.out.println("\nListando ...");
             clientes = repository.findAll();
 
             if(clientes.isEmpty()){
