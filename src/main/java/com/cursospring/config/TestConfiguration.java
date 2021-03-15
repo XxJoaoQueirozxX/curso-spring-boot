@@ -16,6 +16,8 @@ import org.springframework.context.annotation.Profile;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 @Configuration
 @Profile("test")
@@ -81,5 +83,17 @@ public class TestConfiguration implements CommandLineRunner {
             .reduce(BigDecimal.ZERO, BigDecimal::add)
         );
         pedidoRepository.saveAll(Arrays.asList(p1, p2));
+
+
+        System.out.println("\n\n");
+
+
+        Cliente cli = clienteRepository.findClienteFetchPedidos(1L);
+        System.out.println(cli);
+
+
+        List<Pedido> pedidos = pedidoRepository.findByCliente(c1);
+        System.out.println(pedidos);
+
     }
 }

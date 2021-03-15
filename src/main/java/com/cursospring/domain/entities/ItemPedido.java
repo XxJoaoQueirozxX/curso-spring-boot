@@ -1,6 +1,7 @@
 package com.cursospring.domain.entities;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name="item_pedido")
@@ -64,5 +65,28 @@ public class ItemPedido {
 
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ItemPedido that = (ItemPedido) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "ItemPedido{" +
+                "id=" + id +
+                ", quantidade=" + quantidade +
+                ", pedido=" + pedido +
+                ", produto=" + produto +
+                '}';
     }
 }
