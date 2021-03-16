@@ -1,11 +1,14 @@
 package com.cursospring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.*;
 
 @Entity
 @Table(name = "cliente")
-public class Cliente {
+public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,6 +45,7 @@ public class Cliente {
         this.nome = nome;
     }
 
+    @JsonIgnore
     public Set<Pedido> getPedidos() {
         return pedidos;
     }

@@ -84,15 +84,5 @@ public class TestConfiguration implements CommandLineRunner {
         pedidoRepository.saveAll(Arrays.asList(p1, p2));
 
 
-        System.out.println("\n\n");
-
-
-        Cliente cli = clienteRepository.findClienteFetchPedidos(1L);
-        System.out.println(cli);
-
-
-        List<Pedido> pedidos = pedidoRepository.findByCliente(c1);
-        System.out.println(pedidos);
-
     }
 }
