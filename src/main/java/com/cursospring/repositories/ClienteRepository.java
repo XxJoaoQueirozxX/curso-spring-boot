@@ -1,6 +1,6 @@
-package com.cursospring.domain.repositories;
+package com.cursospring.repositories;
 
-import com.cursospring.domain.entities.Cliente;
+import com.cursospring.entities.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

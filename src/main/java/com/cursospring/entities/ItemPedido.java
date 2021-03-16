@@ -1,4 +1,4 @@
-package com.cursospring.domain.entities;
+package com.cursospring.entities;
 
 import javax.persistence.*;
 import java.util.Objects;

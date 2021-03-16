@@ -1,6 +1,6 @@
-package com.cursospring.domain.repositories;
+package com.cursospring.repositories;
 
-import com.cursospring.domain.entities.Produto;
+import com.cursospring.entities.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
