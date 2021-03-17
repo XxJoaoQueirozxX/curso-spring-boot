@@ -23,4 +23,8 @@ public class ClienteService {
     public List<Cliente> findAll(){
         return repository.findAll();
     }
+
+    public Cliente insert(Cliente c){
+        return repository.save(c);
+    }
 }

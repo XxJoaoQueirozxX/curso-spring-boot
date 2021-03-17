@@ -11,13 +11,14 @@ import java.util.*;
 public class Cliente implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
     @Column(name = "nome", nullable = false, length = 100)
     private String nome;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private Set<Pedido> pedidos = new HashSet<>();
 
@@ -45,7 +46,7 @@ public class Cliente implements Serializable {
         this.nome = nome;
     }
 
-    @JsonIgnore
+
     public Set<Pedido> getPedidos() {
         return pedidos;
     }
