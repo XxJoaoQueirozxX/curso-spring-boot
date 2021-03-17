@@ -42,4 +42,10 @@ public class ClienteController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Cliente> update(@PathVariable Long id, @RequestBody Cliente cliente){
+        cliente.setId(null);
+        cliente = service.update(id, cliente);
+        return ResponseEntity.ok(cliente);
+    }
 }

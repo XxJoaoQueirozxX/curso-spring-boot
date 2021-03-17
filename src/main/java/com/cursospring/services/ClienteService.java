@@ -31,4 +31,17 @@ public class ClienteService {
     public void delete(Long id){
         repository.delete(findById(id));
     }
+
+    public Cliente update(Long id, Cliente dados){
+        Cliente c = findById(id);
+        updateData(c, dados);
+        repository.save(c);
+        return c;
+    }
+
+    private void updateData(Cliente cliente, Cliente newData){
+        if (newData != null && newData.getNome() != null && !newData.getNome().isEmpty()){
+            cliente.setNome(newData.getNome());
+        }
+    }
 }
