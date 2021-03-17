@@ -28,7 +28,6 @@ public class ClienteController {
         return ResponseEntity.ok(service.findById(id));
     }
 
-
     @PostMapping
     public ResponseEntity<Cliente> addCliente(@RequestBody Cliente cliente){
         cliente.setId(null);
@@ -37,5 +36,10 @@ public class ClienteController {
         return ResponseEntity.created(uri).body(cliente);
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> remove(@PathVariable Long id){
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }
