@@ -18,6 +18,9 @@ public class Cliente implements Serializable {
     @Column(name = "nome", nullable = false, length = 100)
     private String nome;
 
+    @Column(name = "cpf", length = 11)
+    private String cpf;
+
     @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private Set<Pedido> pedidos = new HashSet<>();
@@ -46,6 +49,13 @@ public class Cliente implements Serializable {
         this.nome = nome;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
     public Set<Pedido> getPedidos() {
         return pedidos;
@@ -69,6 +79,7 @@ public class Cliente implements Serializable {
         return "Cliente{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
                 '}';
     }
 }

@@ -4,6 +4,7 @@ import com.cursospring.entities.Cliente;
 import com.cursospring.repositories.ClienteRepository;
 import com.cursospring.services.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,10 @@ public class ClienteService {
         return repository.findAll();
     }
 
+    public List<Cliente> findAll(Example<Cliente> example){
+        return repository.findAll(example);
+    }
+
     public Cliente insert(Cliente c){
         return repository.save(c);
     }
@@ -40,8 +45,15 @@ public class ClienteService {
     }
 
     private void updateData(Cliente cliente, Cliente newData){
-        if (newData != null && newData.getNome() != null && !newData.getNome().isEmpty()){
-            cliente.setNome(newData.getNome());
+
+        if(newData != null){
+            if ( newData.getNome() != null && !newData.getNome().isEmpty()){
+                cliente.setNome(newData.getNome());
+            }
+
+            if ( newData.getCpf() != null && !newData.getCpf().isEmpty()){
+                cliente.setCpf(newData.getCpf());
+            }
         }
     }
 }
