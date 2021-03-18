@@ -21,7 +21,7 @@ public class ClienteController {
     @GetMapping
     public ResponseEntity<List<Cliente>> getAll(Cliente filtro){
         ExampleMatcher matcher = ExampleMatcher.matching().withIgnoreCase().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
-        Example example = Example.of(filtro, matcher);
+        Example<Cliente> example = Example.of(filtro, matcher);
         List<Cliente> clientes = service.findAll(example);
         return ResponseEntity.ok(clientes);
     }
