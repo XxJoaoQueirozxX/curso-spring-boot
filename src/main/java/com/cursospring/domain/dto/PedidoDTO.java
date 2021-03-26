@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.aspectj.weaver.ast.Not;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -25,7 +26,7 @@ public class PedidoDTO{
     private BigDecimal total;
 
     @NotEmptyList(message = "Pedido não pode ser realizado sem itens.")
-    private List<ItemPedidoDTO> items;
+    private List<@Valid ItemPedidoDTO> items;
 
     public PedidoDTO() {
     }

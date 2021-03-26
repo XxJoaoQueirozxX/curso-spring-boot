@@ -6,8 +6,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
+
 public class ItemPedidoDTO {
+    @NotNull(message = "O campo produto é obrigatório")
     private Long produto;
+    @NotNull(message = "O campo quantidade é obrigatório")
     private Integer quantidade;
 
     public ItemPedidoDTO() {
