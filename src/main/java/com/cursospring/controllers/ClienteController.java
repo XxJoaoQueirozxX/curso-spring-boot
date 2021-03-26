@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.Set;
@@ -35,7 +36,7 @@ public class ClienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Cliente> addCliente(@RequestBody Cliente cliente){
+    public ResponseEntity<Cliente> addCliente(@RequestBody @Valid Cliente cliente){
         cliente.setId(null);
         cliente = service.insert(cliente);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(cliente.getId()).toUri();

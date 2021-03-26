@@ -3,6 +3,7 @@ package com.cursospring.domain.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.*;
 
@@ -15,7 +16,8 @@ public class Cliente implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nome", nullable = false, length = 100)
+    @Column(name = "nome", length = 100)
+    @NotEmpty(message = "O campo nome é obrigatório")
     private String nome;
 
     @Column(name = "cpf", length = 11)
