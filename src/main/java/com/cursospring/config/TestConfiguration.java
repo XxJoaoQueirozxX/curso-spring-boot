@@ -38,8 +38,8 @@ public class TestConfiguration implements CommandLineRunner {
     public void run(String... args) throws Exception {
 //      Clientes
 
-        Cliente c1 = new Cliente(null, "João");
-        Cliente c2 = new Cliente(null, "Carlos");
+        Cliente c1 = new Cliente(null, "João", "466.446.515-77");
+        Cliente c2 = new Cliente(null, "Carlos", "466.446.515-77");
         clienteRepository.saveAll(Arrays.asList(c1, c2));
 
 

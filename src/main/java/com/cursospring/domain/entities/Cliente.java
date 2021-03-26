@@ -1,6 +1,7 @@
 package com.cursospring.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -20,7 +21,9 @@ public class Cliente implements Serializable {
     @NotEmpty(message = "O campo nome é obrigatório")
     private String nome;
 
-    @Column(name = "cpf", length = 11)
+    @Column(name = "cpf", length = 14)
+    @NotEmpty(message = "O campo CPF é obrigatório")
+    @CPF(message = "Informe um CPF válido")
     private String cpf;
 
     @JsonIgnore
@@ -30,9 +33,10 @@ public class Cliente implements Serializable {
     public Cliente() {
     }
 
-    public Cliente(Long id, String nome) {
+    public Cliente(Long id, String nome, String cpf) {
         this.id = id;
         this.nome = nome;
+        this.cpf = cpf;
     }
 
     public Long getId() {
