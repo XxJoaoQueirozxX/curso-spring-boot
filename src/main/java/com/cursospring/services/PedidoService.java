@@ -1,5 +1,6 @@
 package com.cursospring.services;
 
+import com.cursospring.domain.dto.AtualizacaoStatusPedidoDTO;
 import com.cursospring.domain.dto.ItemPedidoDTO;
 import com.cursospring.domain.dto.PedidoDTO;
 import com.cursospring.domain.entities.Cliente;
@@ -10,6 +11,7 @@ import com.cursospring.repositories.ItemPedidoRepository;
 import com.cursospring.repositories.PedidoRepository;
 import com.cursospring.services.exceptions.NotFoundException;
 import com.cursospring.services.exceptions.PedidoSemItemsException;
+import com.cursospring.services.exceptions.StatusPedidoInexistenteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,6 +54,16 @@ public class PedidoService {
         return repository.findById(id).orElseThrow(() -> new NotFoundException("nenhum pedido encontrado para o ID: " + id));
     }
 
+    public void updateStatus(Long id, AtualizacaoStatusPedidoDTO dto){
+        Pedido p = findById(id);
+        try {
+            StatusPedido status = StatusPedido.valueOf(dto.getStatus().toUpperCase());
+            p.setStatus(status);
+            repository.save(p);
+        } catch (IllegalArgumentException e){
+            throw new StatusPedidoInexistenteException("O status '"+ dto.getStatus().toUpperCase() +"' é inexistente.");
+        }
+    }
 
     private List<ItemPedido> converterItems(Pedido pedido, List<ItemPedidoDTO> items){
         if (items.isEmpty()){
