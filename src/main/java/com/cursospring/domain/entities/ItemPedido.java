@@ -1,5 +1,7 @@
 package com.cursospring.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -18,6 +20,7 @@ public class ItemPedido {
 
     @ManyToOne
     @JoinColumn(name="pedido_id")
+    @JsonIgnore
     private Pedido pedido;
 
     @ManyToOne
@@ -34,6 +37,8 @@ public class ItemPedido {
         this.pedido = pedido;
         this.produto = produto;
     }
+
+
 
     public Long getId() {
         return id;
