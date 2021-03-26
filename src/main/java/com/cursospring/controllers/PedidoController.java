@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
@@ -26,7 +27,7 @@ public class PedidoController {
     }
 
     @PostMapping
-    public ResponseEntity<Pedido> insert(@RequestBody PedidoDTO dto){
+    public ResponseEntity<Pedido> insert(@RequestBody @Valid PedidoDTO dto){
         Pedido p = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/{id}").buildAndExpand(p.getId()).toUri();
         return ResponseEntity.created(uri).body(p);

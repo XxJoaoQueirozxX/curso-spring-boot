@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.aspectj.weaver.ast.Not;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
@@ -15,8 +17,12 @@ import java.util.List;
 
 public class PedidoDTO{
 
+    @NotNull(message = "Informe o id do cliente")
     private Long cliente;
+
+    @NotNull(message = "O total do pedido é obrigatório")
     private BigDecimal total;
+
     private List<ItemPedidoDTO> items;
 
     public PedidoDTO() {
