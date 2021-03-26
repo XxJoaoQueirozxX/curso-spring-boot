@@ -1,17 +1,9 @@
 package com.cursospring.domain.dto;
 
 import com.cursospring.validations.NotEmptyList;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import org.aspectj.weaver.ast.Not;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -19,13 +11,13 @@ import java.util.List;
 
 public class PedidoDTO{
 
-    @NotNull(message = "Informe o id do cliente")
+    @NotNull(message = "{campo.codigo-cliente.obrigatorio}")
     private Long cliente;
 
-    @NotNull(message = "O total do pedido é obrigatório")
+    @NotNull(message = "{campo.total-pedido.obrigatorio}")
     private BigDecimal total;
 
-    @NotEmptyList(message = "Pedido não pode ser realizado sem itens.")
+    @NotEmptyList(message = "{campo.items-pedido.obrigatorio}")
     private List<@Valid ItemPedidoDTO> items;
 
     public PedidoDTO() {
