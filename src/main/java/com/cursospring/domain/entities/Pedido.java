@@ -1,5 +1,6 @@
 package com.cursospring.domain.entities;
 
+import com.cursospring.domain.enums.StatusPedido;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -28,6 +29,11 @@ public class Pedido {
     private BigDecimal total;
 
 
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private StatusPedido status;
+
+
     @ManyToOne(targetEntity = Cliente.class)
     @JoinColumn(name = "client_id")
     private Cliente cliente;
@@ -39,11 +45,12 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(Long id, LocalDate dataPedido, BigDecimal total, Cliente cliente) {
+    public Pedido(Long id, LocalDate dataPedido, BigDecimal total, Cliente cliente, StatusPedido status) {
         this.id = id;
         this.cliente = cliente;
         this.dataPedido = dataPedido;
         this.total = total;
+        this.status = status;
     }
 
     public Long getId() {
@@ -74,6 +81,14 @@ public class Pedido {
         return total;
     }
 
+    public StatusPedido getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusPedido status) {
+        this.status = status;
+    }
+
     public void setTotal(BigDecimal total) {
         this.total = total;
     }
@@ -101,6 +116,7 @@ public class Pedido {
                 "id=" + id +
                 ", dataPedido=" + dataPedido +
                 ", total=" + total +
+                ", status=" + status +
                 '}';
     }
 }

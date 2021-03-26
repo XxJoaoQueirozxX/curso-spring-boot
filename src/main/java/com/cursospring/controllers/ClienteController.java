@@ -1,6 +1,7 @@
 package com.cursospring.controllers;
 
 import com.cursospring.domain.entities.Cliente;
+import com.cursospring.domain.entities.Pedido;
 import com.cursospring.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/clientes")
@@ -53,4 +55,10 @@ public class ClienteController {
         return ResponseEntity.ok(cliente);
     }
 
+
+    @GetMapping(value = "/{id}/pedidos")
+    public ResponseEntity<Set<Pedido>> getClientePedidos(@PathVariable Long id){
+        Cliente c = service.findById(id);
+        return ResponseEntity.ok(c.getPedidos());
+    }
 }

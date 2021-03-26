@@ -5,6 +5,7 @@ import com.cursospring.domain.dto.PedidoDTO;
 import com.cursospring.domain.entities.Cliente;
 import com.cursospring.domain.entities.ItemPedido;
 import com.cursospring.domain.entities.Pedido;
+import com.cursospring.domain.enums.StatusPedido;
 import com.cursospring.repositories.ItemPedidoRepository;
 import com.cursospring.repositories.PedidoRepository;
 import com.cursospring.services.exceptions.NotFoundException;
@@ -38,6 +39,7 @@ public class PedidoService {
         Pedido pedido = new Pedido();
         pedido.setCliente(c);
         pedido.setTotal(dto.getTotal());
+        pedido.setStatus(StatusPedido.REALIZADO);
 
         List<ItemPedido> items = converterItems(pedido, dto.getItems());
         pedido = repository.save(pedido);

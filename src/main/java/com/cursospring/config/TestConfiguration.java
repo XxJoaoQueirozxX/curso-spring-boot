@@ -4,6 +4,7 @@ import com.cursospring.domain.entities.Cliente;
 import com.cursospring.domain.entities.ItemPedido;
 import com.cursospring.domain.entities.Pedido;
 import com.cursospring.domain.entities.Produto;
+import com.cursospring.domain.enums.StatusPedido;
 import com.cursospring.repositories.ClienteRepository;
 import com.cursospring.repositories.ItemPedidoRepository;
 import com.cursospring.repositories.PedidoRepository;
@@ -43,8 +44,8 @@ public class TestConfiguration implements CommandLineRunner {
 
 
 //      Pedidos
-        Pedido p1 = new Pedido(null, LocalDate.now(), BigDecimal.valueOf(0L), c1);
-        Pedido p2 = new Pedido(null, LocalDate.now(), BigDecimal.valueOf(0L), c1);
+        Pedido p1 = new Pedido(null, LocalDate.now(), BigDecimal.valueOf(0L), c1, StatusPedido.REALIZADO);
+        Pedido p2 = new Pedido(null, LocalDate.now(), BigDecimal.valueOf(0L), c1, StatusPedido.REALIZADO);
 
         pedidoRepository.saveAll(Arrays.asList(p1, p2));
         c1.getPedidos().addAll(Arrays.asList(p1, p2));
