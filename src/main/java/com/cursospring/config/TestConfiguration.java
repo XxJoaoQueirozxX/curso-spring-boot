@@ -1,9 +1,9 @@
 package com.cursospring.config;
 
-import com.cursospring.entities.Cliente;
-import com.cursospring.entities.ItemPedido;
-import com.cursospring.entities.Pedido;
-import com.cursospring.entities.Produto;
+import com.cursospring.domain.entities.Cliente;
+import com.cursospring.domain.entities.ItemPedido;
+import com.cursospring.domain.entities.Pedido;
+import com.cursospring.domain.entities.Produto;
 import com.cursospring.repositories.ClienteRepository;
 import com.cursospring.repositories.ItemPedidoRepository;
 import com.cursospring.repositories.PedidoRepository;
@@ -16,7 +16,6 @@ import org.springframework.context.annotation.Profile;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.List;
 
 @Configuration
 @Profile("test")

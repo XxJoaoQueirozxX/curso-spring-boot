@@ -1,6 +1,6 @@
 package com.cursospring.controllers;
 
-import com.cursospring.entities.Produto;
+import com.cursospring.domain.entities.Produto;
 import com.cursospring.services.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -52,4 +52,5 @@ public class ProdutoController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+
 }

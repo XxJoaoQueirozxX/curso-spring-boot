@@ -1,7 +1,7 @@
 package com.cursospring.repositories;
 
-import com.cursospring.entities.Cliente;
-import com.cursospring.entities.Pedido;
+import com.cursospring.domain.entities.Cliente;
+import com.cursospring.domain.entities.Pedido;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

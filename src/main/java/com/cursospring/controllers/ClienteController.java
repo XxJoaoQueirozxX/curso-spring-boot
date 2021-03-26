@@ -1,6 +1,6 @@
 package com.cursospring.controllers;
 
-import com.cursospring.entities.Cliente;
+import com.cursospring.domain.entities.Cliente;
 import com.cursospring.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -17,6 +17,7 @@ import java.util.List;
 public class ClienteController {
     @Autowired
     private ClienteService service;
+
 
     @GetMapping
     public ResponseEntity<List<Cliente>> getAll(Cliente filtro){

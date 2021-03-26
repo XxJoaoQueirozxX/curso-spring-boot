@@ -1,6 +1,6 @@
 package com.cursospring.services;
 
-import com.cursospring.entities.Cliente;
+import com.cursospring.domain.entities.Cliente;
 import com.cursospring.repositories.ClienteRepository;
 import com.cursospring.services.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

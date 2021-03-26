@@ -1,4 +1,7 @@
-package com.cursospring.entities;
+package com.cursospring.domain.entities;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -13,9 +16,12 @@ public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
-    @Column(name = "data")
+    @CreationTimestamp
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @Column(name = "data", updatable = false)
     private LocalDate dataPedido;
 
     @Column(name = "total", precision = 20, scale = 2)

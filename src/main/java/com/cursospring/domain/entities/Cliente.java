@@ -1,4 +1,4 @@
-package com.cursospring.entities;
+package com.cursospring.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
