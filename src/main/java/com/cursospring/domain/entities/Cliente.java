@@ -36,7 +36,6 @@ public class Cliente {
 
     @JsonIgnore
     @OneToMany(mappedBy = "cliente")
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Set<Pedido> pedidos = new HashSet<>();
 
 
