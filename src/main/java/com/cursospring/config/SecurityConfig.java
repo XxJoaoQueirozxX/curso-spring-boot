@@ -1,7 +1,10 @@
 package com.cursospring.config;
 
 
+import com.cursospring.services.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -13,6 +16,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
+    @Autowired
+    private UsuarioService usuarioService;
+
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -21,11 +27,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // Autenticação
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .passwordEncoder(passwordEncoder())
-                .withUser("fulano")
-                .password(passwordEncoder().encode("123"))
-                .roles("USER", "ADMIN");
+
+        auth
+            .userDetailsService(usuarioService)
+            .passwordEncoder(passwordEncoder());
+
     }
 
     // Autorização
@@ -40,6 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .hasAnyRole("USER", "ADMIN")
                 .antMatchers("/api/produtos/**")
                     .hasRole("ADMIN")
+                .antMatchers("/h2-console/**")
+                    .permitAll()
             .and()
                 .httpBasic();
     }
