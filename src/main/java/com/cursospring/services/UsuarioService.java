@@ -2,6 +2,7 @@ package com.cursospring.services;
 
 import com.cursospring.domain.entities.Usuario;
 import com.cursospring.repositories.UsuarioRepository;
+import com.cursospring.services.exceptions.SenhaInvalidaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,6 +27,14 @@ public class UsuarioService implements UserDetailsService {
     public Usuario save (Usuario usuario){
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         return repository.save(usuario);
+    }
+
+    public UserDetails autenticar(Usuario usuario){
+        UserDetails details = loadUserByUsername(usuario.getUsername());
+        if (passwordEncoder.matches(usuario.getPassword(), details.getPassword())){
+            return details;
+        }
+        throw new SenhaInvalidaException("Senha inválida");
     }
 
     @Override

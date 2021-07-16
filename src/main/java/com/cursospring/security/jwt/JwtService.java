@@ -1,4 +1,4 @@
-package com.cursospring;
+package com.cursospring.security.jwt;
 
 import com.cursospring.domain.entities.Usuario;
 import io.jsonwebtoken.Claims;
@@ -6,20 +6,14 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.HashMap;
 
 @Service
-public class JWTService implements CommandLineRunner{
+public class JwtService {
 
 
     @Value("${security.jwt.expire-in}")
